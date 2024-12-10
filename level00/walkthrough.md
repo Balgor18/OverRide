@@ -1,4 +1,4 @@
-# Walkthrough
+# Level 00
 
 En décompilant la fonction `main` du binaire, on peut trouver:
 
