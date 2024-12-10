@@ -10,8 +10,8 @@ pub fn main() void {
         \\***********************************
         \\*            -Level00 -           *
         \\***********************************
-        \\Password:
     );
+    c.puts("Password: ");
 
     var password: u32 = undefined;
     c.scanf("%u", &password);
