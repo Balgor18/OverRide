@@ -1,6 +1,7 @@
 # Level02
 
-En lancant le binaire, on peut s'attendre a voir :
+En lancant le binaire, on peut s'attendre à voir :
+
 ```sh
 ===== [ Secure Access System v1.0 ] =====
 /***************************************\
@@ -13,6 +14,7 @@ En lancant le binaire, on peut s'attendre a voir :
 ```
 
 Ensuite en vérifiant la liste des symboles disponibles, on trouve:
+
 ```sh
 Non-debugging symbols:
 0x0000000000400640  _init
@@ -26,6 +28,7 @@ Non-debugging symbols:
 ```
 
 Dans la premiere partie du code on peut voir :
+
 ```sh
 	mov    edx,0x400bb0
 	mov    eax,0x400bb2  # <-- 0x400bb2 Contient "/home/users/level03/.pass"
@@ -36,6 +39,7 @@ Dans la premiere partie du code on peut voir :
 ```
 
 Une fois avoir disass le main, on peut y trouver :
+
 ```sh
 	mov    edx,0x29               # <-- EDX = 41
 	mov    rsi,rcx                # <-- RSI = Le password qui se trouvera dans le fichier "/home/users/level03/.pass"
@@ -55,9 +59,8 @@ Une fois avoir disass le main, on peut y trouver :
 
 ```
 
-
-Vu que le code fais une comparaison pour pouvoir acceder a l'appel de la function systeme il nous faut le code qui se trouve dans le fichier `.pass`.
-
+Vu que le code fais une comparaison pour pouvoir acceder a l'appel de la function systeme il nous
+faut le code qui se trouve dans le fichier `.pass`.
 
 ```c
 	char username [100];
