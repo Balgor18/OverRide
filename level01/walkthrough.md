@@ -2,7 +2,7 @@
 
 En vérifiant la liste des symboles disponibles, on trouve:
 
-```text
+```as
 0x08048464  verify_user_name
 0x080484a3  verify_user_pass
 0x080484d0  main
@@ -14,7 +14,7 @@ On peut voir une fonction `verify_user_name` et une fonction `verify_user_pass`.
 
 Dans `verify_user_name`, on trouve:
 
-```
+```as
 0x08048478 <+20>:	mov    edx,0x804a040
 0x0804847d <+25>:	mov    eax,0x80486a8
 0x08048482 <+30>:	mov    ecx,0x7
