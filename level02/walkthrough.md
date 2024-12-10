@@ -6,8 +6,8 @@ En lancant le binaire, on peut s'attendre a voir :
 /***************************************\
 | You must login to access this system. |
 \**************************************/
---[ Username: 
---[ Password: 
+--[ Username:
+--[ Password:
 *****************************************
  does not have access!
 ```
@@ -39,10 +39,10 @@ Une fois avoir disass le main, on peut y trouver :
 ```sh
 	mov    edx,0x29               # <-- EDX = 41
 	mov    rsi,rcx                # <-- RSI = Le password qui se trouvera dans le fichier "/home/users/level03/.pass"
-	mov    rdi,rax                # <-- RDI = L'input du password 
+	mov    rdi,rax                # <-- RDI = L'input du password
 	call   0x400670 <strncmp@plt> # <-- Strncmp compare les registre rsi et rdi et prends en lenght edx
 	test   eax,eax                # <-- Pour atteindre system il faut que eax = 0
-	jne    0x400a96 <main+642> 
+	jne    0x400a96 <main+642>
 	mov    eax,0x400d22
 ...
 	call   0x4006c0 <printf@plt>
@@ -70,3 +70,27 @@ Vu que le code fais une comparaison pour pouvoir acceder a l'appel de la functio
 ```
 
 Donc nous allons l'utiliser pour trouver le mot de passe du fichier `.pass`.
+
+Le mot de passe est stoqué dans un buffer se trouvant sur la stack. À chaque paramètre
+supplémentaire présent dans le `printf`, on recule sur la stack. Cela nous permet de l'afficher.
+
+En affichant un maximum de `%p`, on peut assez rapidement se faire une bonne idée de ce à quoi
+ressemble cette stack.
+
+En testant plusieurs possibilités, on trouve assez rapidement les valeurs:
+
+```
+0x756e5052343768480x45414a35617339510x377a7143574e67580x354a35686e4758730x48336750664b394d
+```
+
+Le reste est principalement des valeurs nulles, ou des pointeurs. Ces valeurs sont petit
+boutiste. Il faut donc les convertir. On peut utiliser [ce service](https://www.save-editor.com/tools/wse_hex.html)
+pour la convertion.
+
+Cela donne:
+
+```
+Hh74RPnuQ9sa5JAEXgNWCqz7sXGnh5J5M9KfPg3H
+```
+
+C'est notre flag.
