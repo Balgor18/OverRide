@@ -6,7 +6,7 @@ const c = @cImport({
 pub fn main() void {
     @setRuntimeSafety(false);
 
-    c.puts(
+    _ = c.puts(
         \\***********************************
         \\*            -Level00 -           *
         \\***********************************
@@ -14,12 +14,12 @@ pub fn main() void {
     );
 
     var password: u32 = undefined;
-    c.scanf("%u", &password);
+    _ = c.scanf("%u", &password);
 
     if (password != 5276) {
-        c.puts("Invalid Password!");
+        _ = c.puts("Invalid Password!");
     } else {
-        c.puts("Authenticated!");
-        c.system("/bin/sh");
+        _ = c.puts("Authenticated!");
+        _ = c.system("/bin/sh");
     }
 }
