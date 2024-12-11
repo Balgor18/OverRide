@@ -76,7 +76,7 @@ int decrypt(EVP_PKEY_CTX *ctx, /* useless enter data */){
 
 ```
 
-Nous allons maintenant utiliser [Dcode](https://www.dcode.fr/xor-cipher) en utilisant les valeurs '51 7d 7c 75 60 73 66 67 7e 73 66 7b 7d 7c 61 33'. Ce sont les vlauers du tableau local_21. Si on regarde le resultats du site on peut voir que la valeur 12 donne une resultats qui ressemble a "Congratulations!".
+Nous allons maintenant utiliser [Dcode](https://www.dcode.fr/xor-cipher) en utilisant les valeurs '51 7d 7c 75 60 73 66 67 7e 73 66 7b 7d 7c 61 33'. Ce sont les valuers du tableau local_21. Si on regarde le résultats du site on peut voir que la valeur 12 donne une resultats qui ressemble a "Congratulations!".
 
 |---------|------------|
 | Decimal | Hexadecimal|
