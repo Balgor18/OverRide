@@ -30,11 +30,9 @@ pub fn main() !void {
     const stdout = std.io.getStdOut();
     const stdin = std.io.getStdIn();
 
-    // FFFFD8A5
     try stdout.writeAll("SHELLCODE address: ");
     const shellcode_addr = try readNumber(stdin);
 
-    // 80497e0
     try stdout.writeAll("`exit@got.plt` address: ");
     const exit_addr = try readNumber(stdin);
 
