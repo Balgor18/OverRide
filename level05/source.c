@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     int i = 0;
     char buf[100];
 
-    fgets(buf, 100, 0);
+    fgets(buf, 100, stdin);
 
     for (i = 0; i < strlen(buf); i++)
         if (buf[i] >= 'A' && buf[i] <= 'Z')
