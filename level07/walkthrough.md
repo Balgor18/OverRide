@@ -15,7 +15,7 @@ level07@OverRide:~$ ./level07
    wil has reserved some storage :>
 ----------------------------------------------------
 
-Input command: 
+Input command:
 ```
 
 Notre objectif dans ce niveau est de faire un peu la même chose que le level 05.
@@ -28,7 +28,7 @@ Pour cela, nous allons devoir récupérer l'adresse de quelques éléments du pr
 
 Après avoir récupéré les adresses qui nous intéressent. Nous avons besoin de savoir qu'elle est la taille de notre tableau :
 ```sh
-0xffffd6ec-0xffffd524 = 456 
+0xffffd6ec-0xffffd524 = 456
 # Puis nous allons diviser par 4 car ces un tableau de int
 456 / 4 =  114
 ```
@@ -64,7 +64,14 @@ Input command: store
 Input command: quit
 ```
 
-Mais si on fait ce calcul :
+Le programme vérifie quelques règles avant de laisser ou non un nombre être stocké à un
+index spécifique. On On remarque 116 fonctionne correctement, mais 114 est problématique.
+
+Le programme utilise la fonction `scanf` pour récupérer son input. Cette fonction ne vérifie pas
+les overflows d'int. On peut ainsi utiliser un nombre égale à 114 modulo (2^32 / 4) pour déjouer la
+vérification d'index tout en écrivant le nombre à la même adresse mémoire.
+
+Ainsi :
 ```sh
 0xf7e6aed0 hex to dec --> 4159090384
 114 + ((2 ^ 32) / 4) = 1073741938
