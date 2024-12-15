@@ -21,4 +21,9 @@ ERROR: Failed to open ./backups//home/users/level09/.pass
 Or, il n'arrive toujours pas à trouver le dossier backup. Il suffit de lui créer les dossiers
 qui lui manque.
 
+```sh
+mkdir -p /tmp/backups/home/users/level09
+~/level08 /home/users/level09/.pass
+```
+
 Vous n'avez plus qu'à récupérer le pass dans le dossier.
